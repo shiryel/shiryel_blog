@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="description"><meta content="elixir, phoenix" name="keywords"><meta content="Testing Phoenix Channels on Browser console" name="og:title"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/prism.min.css" />
+<link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+</head><body><div class="content"><a href="/">Back</a><h1 class="post">Testing Phoenix Channels on Browser console</h1><p class="date">2020-08-02</p><p>So... I was building a backend using only the channels, and I wanted to test it on the console... so after many search, here is how you can make it:</p>
+
+<h2>1 - Connect to a socket</h2>
+
+<pre><code class="language-js">  ws = new WebSocket(&quot;ws://localhost:4000/socket/websocket&quot;); 
+</code></pre>
+
+<h2>2 - Show the messages that arrive from the server</h2>
+
+<pre><code class="language-js">  ws.onmessage = function (e) {
+        console.log(&quot;From Server:&quot;+ e.data);
+          };
+</code></pre>
+
+<h2>3 - Join to a topic</h2>
+
+<pre><code class="language-js">ws.send(JSON.stringify({
+    &quot;topic&quot;: &quot;chat:lobby&quot;,
+      &quot;event&quot;: &quot;phx_join&quot;,
+        &quot;payload&quot;: { &quot;hello&quot;: &quot;world&quot; },
+          &quot;ref&quot;: 0
+}));
+</code></pre>
+
+<h2>4 - Send a event with a payload to the topic</h2>
+
+<pre><code class="language-js">ws.send(JSON.stringify({
+    &quot;topic&quot;: &quot;chat:lobby&quot;,
+      &quot;event&quot;: &quot;echo&quot;,
+        &quot;payload&quot;: { &quot;hello&quot;: &quot;world&quot; },
+          &quot;ref&quot;: 0
+}));
+</code></pre>
+
+<p>Keep in mind that the phoenix uses the <code>event</code> <q>heartbeat</q> to keep the conection alive, so if you dont want to lose the conection, send it each 30 seconds hehe</p>
+
+<p>So... I was building a backend using only the channels, and I wanted to test it on the console... so after many search, here is how you can make it:</p>
+
+<h2>1 - Connect to a socket</h2>
+
+<pre><code class="language-js">  ws = new WebSocket(&quot;ws://localhost:4000/socket/websocket&quot;); 
+</code></pre>
+
+<h2>2 - Show the messages that arrive from the server</h2>
+
+<pre><code class="language-js">  ws.onmessage = function (e) {
+    console.log(&quot;From Server:&quot;+ e.data);
+  };
+</code></pre>
+
+<h2>3 - Join to a topic</h2>
+
+<pre><code class="language-js">ws.send(JSON.stringify({
+  &quot;topic&quot;: &quot;chat:lobby&quot;,
+  &quot;event&quot;: &quot;phx_join&quot;,
+  &quot;payload&quot;: { &quot;hello&quot;: &quot;world&quot; },
+  &quot;ref&quot;: 0
+}));
+</code></pre>
+
+<h2>4 - Send a event with a payload to the topic</h2>
+
+<pre><code class="language-js">ws.send(JSON.stringify({
+  &quot;topic&quot;: &quot;chat:lobby&quot;,
+  &quot;event&quot;: &quot;echo&quot;,
+  &quot;payload&quot;: { &quot;hello&quot;: &quot;world&quot; },
+  &quot;ref&quot;: 0
+}));
+</code></pre>
+
+<p>Keep in mind that the phoenix uses the <code>event</code> <q>heartbeat</q> to keep the conection alive, so if you dont want to lose the conection, send it each 30 seconds hehe</p>
+<br /><a href="/">Back</a><style type="text/css">h1.post {
+  text-align: center;
+  margin-top: 1em;
+}
+
+p.date {
+  text-align: center;
+  margin-bottom: 2em;
+}</style></div><footer><p><a href="https://github.com/shiryel/shiryel-blog" rel="noopener noreferrer" target="_blank">Hosted on Github</a></p><p>Copyright &copy; Shiryel</p><p><a href="https://github.com/still-ex/still" rel="noopener noreferrer" target="_blank">Made with Still</a></p></footer><style type="text/css">footer {
+  display: flex;
+  gap: 25px;
+  text-align: center;
+}</style></body><script  src="/js/prism.min.js"></script>
+</html><style type="text/css">body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FBFBFBba;
+  background-image: radial-gradient(
+    circle at center center,
+    transparent 0%,
+    rgb(33, 33, 33) 99%
+    ),
+    repeating-linear-gradient(
+    0deg,
+    rgba(163, 163, 163, 0.2) 0px,
+    rgba(163, 163, 163, 0.2) 1px,
+    transparent 1px,
+    transparent 30px
+    ),
+    repeating-linear-gradient(
+    90deg,
+    rgba(163, 163, 163, 0.2) 0px,
+    rgba(163, 163, 163, 0.2) 1px,
+    transparent 1px,
+    transparent 30px
+    ),
+    linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+}
+
+.content {
+  background-color: #080A12;
+  border-radius: 3px;
+  padding: 20px;
+  width: 90vw;
+  max-width: 1000px;
+}
+
+@media (min-width: 768px) {
+  .content{
+    margin-top: 30px;
+    padding: 30px 40px;
+    min-height: 700px;
+  }
+}</style>

@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="description"><meta content="elixir, phoenix, svelte" name="keywords"><meta content="How to add svelte on Elixir Phoenix Framework" name="og:title"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/prism.min.css" />
+<link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+</head><body><div class="content"><a href="/">Back</a><h1 class="post">How to add svelte on Elixir Phoenix Framework</h1><p class="date">2020-07-17</p><h2>Adding the Svelte and Svelte-Loader</h2>
+
+<p>To do that, run this on the root dir of your phoenix project:
+<code>bash
+cd assets &amp;&amp; npm install svelte svelte-loader --save
+</code></p>
+
+<h2>Configuring the webpack</h2>
+
+<p>Based on: https://github.com/sveltejs/template-webpack</p>
+
+<p>First add this on asserts/webpack.config.js:</p>
+
+<pre><code class="language-js">resolve: {
+    alias: {
+        svelte: path.resolve(&#39;node_modules&#39;, &#39;svelte&#39;)
+    },
+    extensions: [&#39;.mjs&#39;, &#39;.js&#39;, &#39;.svelte&#39;],
+    mainFields: [&#39;svelte&#39;, &#39;browser&#39;, &#39;module&#39;, &#39;main&#39;]
+}
+</code></pre>
+
+<p>Then add:</p>
+
+<pre><code class="language-javascript">{
+    test: /\.svelte$/,
+    use: {
+        loader: &#39;svelte-loader&#39;,
+        options: {
+            emitCss: true,
+            hotReload: true
+        }
+    }
+}
+</code></pre>
+
+<p>For the config explanations see: https://github.com/sveltejs/svelte-loader</p>
+
+<h2>Adding the function on Phoenix</h2>
+
+<p>On your APP_web.ex in the function <code>view_helpers</code> add the function:</p>
+
+<pre><code class="language-elixir">@doc &quot;&quot;&quot;
+Will add a component from the asserts/js/svelte, the component must have the same `file_name`
+&quot;&quot;&quot;
+@spec svelte(bitstring(), map()) :: Phoenix.HTML.safe()
+def svelte(file_name, props \\ %{}) do
+  {:ok, props} = Jason.encode(props)
+
+  tag =
+    Phoenix.HTML.Tag.tag(:div,
+      data: [props: props],
+      class: &quot;__svelte__-#{file_name}&quot;
+    )
+    |&gt; Phoenix.HTML.safe_to_string()
+
+  Phoenix.HTML.raw(tag &lt;&gt; &quot;&lt;/div&gt;&quot;)
+end
+</code></pre>
+
+<p><code>Note: You can define this function in another file and import if you want a more clean solution</code></p>
+
+<h2>Mounting the svelte component</h2>
+
+<p>Finally we need to get the svelte file and mount on the element defined by the function above, for this we create a file <code>svelte.js</code> on assets/js/</p>
+
+<pre><code class="language-javascript">// This code will look in the assets/js/svelte/ and in the sub-directorys for
+// .svelte files, the result of this files will be mounted on the element
+// &quot;svelte-file_name&quot; who have props from the phoenix render(name, props)
+
+// directory, useSubdirectories, regex
+const context = require.context(&quot;./svelte&quot;, true, /\.svelte$/);
+
+window.onload = function () {
+  context.keys().forEach(file_path =&gt; {
+    // name that will be requeride by render(name, props)
+    const file_name = file_path.replace(/\.\/|\.svelte$/g, &quot;&quot;);
+
+    // COMPONENT
+    const component_name = `svelte-${file_name}`;
+    const component_container = document.getElementById(component_name);
+    if (!component_container) {
+      return;
+    }
+
+    // PROPS
+    const { props } = component_container.dataset;
+    let my_props = {};
+    if (props) {
+      my_props = JSON.parse(props);
+    }
+
+    // MOUNT ON
+    const App = require(`./svelte/${file_name}`);
+
+    new App.default({
+      target: component_container,
+      props: my_props
+    });
+  });
+};
+</code></pre>
+
+<h2>Testing</h2>
+
+<p>Just create a component and add a
+<code>elixir
+&lt;\%= svelte &quot;YOUR_COMPONENT_FILE_NAME&quot;, %{some_var: &quot;some value&quot;} %&gt;
+</code>
+on a template :)</p>
+
+<p>Note 1: Yes, the YOUR_COMPONENT_FILE_NAME is the name of your file, please change it ;)</p>
+
+<p>Note 2: The props will be used on your <code>export</code> variables on the svelte component</p>
+<br /><a href="/">Back</a><style type="text/css">h1.post {
+  text-align: center;
+  margin-top: 1em;
+}
+
+p.date {
+  text-align: center;
+  margin-bottom: 2em;
+}</style></div><footer><p><a href="https://github.com/shiryel/shiryel-blog" rel="noopener noreferrer" target="_blank">Hosted on Github</a></p><p>Copyright &copy; Shiryel</p><p><a href="https://github.com/still-ex/still" rel="noopener noreferrer" target="_blank">Made with Still</a></p></footer><style type="text/css">footer {
+  display: flex;
+  gap: 25px;
+  text-align: center;
+}</style></body><script  src="/js/prism.min.js"></script>
+</html><style type="text/css">body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FBFBFBba;
+  background-image: radial-gradient(
+    circle at center center,
+    transparent 0%,
+    rgb(33, 33, 33) 99%
+    ),
+    repeating-linear-gradient(
+    0deg,
+    rgba(163, 163, 163, 0.2) 0px,
+    rgba(163, 163, 163, 0.2) 1px,
+    transparent 1px,
+    transparent 30px
+    ),
+    repeating-linear-gradient(
+    90deg,
+    rgba(163, 163, 163, 0.2) 0px,
+    rgba(163, 163, 163, 0.2) 1px,
+    transparent 1px,
+    transparent 30px
+    ),
+    linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+}
+
+.content {
+  background-color: #080A12;
+  border-radius: 3px;
+  padding: 20px;
+  width: 90vw;
+  max-width: 1000px;
+}
+
+@media (min-width: 768px) {
+  .content{
+    margin-top: 30px;
+    padding: 30px 40px;
+    min-height: 700px;
+  }
+}</style>

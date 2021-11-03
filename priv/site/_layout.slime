@@ -17,14 +17,13 @@ html lang="en"
     meta name="twitter:card" content="summary"
     meta name="twitter:site" content="@shiryel_"
     meta name="twitter:creator" content="@shiryel_"
-    = link_to_css "css/prism.min.css", media: "all"
     = link_to_css "css/reset.css", media: "all"
+    = link_to_css "css/prism.min.css", media: "all"
+    = link_to_js "js/prism.min.js"
   body
     .content
       = @children
     = include(@env, "_includes/footer.slime")
-
-  = link_to_js "js/prism.min.js"
 
 css:
   body {

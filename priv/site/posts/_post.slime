@@ -1,0 +1,21 @@
+---
+layout: _layout.slime
+---
+
+= link @env, "Back", to: "/"
+h1.post = @env[:title]
+p.date = @env[:date]
+= @children
+<br />
+= link @env, "Back", to: "/"
+
+css: 
+  h1.post {
+    text-align: center;
+    margin-top: 1em;
+  }
+  
+  p.date {
+    text-align: center;
+    margin-bottom: 2em;
+  }

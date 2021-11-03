@@ -1,0 +1,48 @@
+---
+layout: _layout.slime
+---
+
+h1.title Welcome to Shiryel's Blog
+
+.main
+  p Hello! <br/> Welcome to my little blog, where I keep ideas, studies, explanations and random useless things. Good luck.
+
+  h2 Posts
+  ul
+  = Enum.map get_collections(@env, "post") |> Enum.sort_by(&(&1.metadata[:date]), :desc) |> Enum.group_by(&(&1.metadata[:date] |> String.slice(0, 7))) |> Enum.sort(:desc), fn {month, values} ->
+    .group-month
+      p = month
+      = Enum.map values, fn x ->
+        .post-link
+          = link @env, x.metadata.title, to: x.output_file
+          = Enum.map x.metadata[:tags], fn y -> 
+            .tag = y
+
+css:
+  h1.title {
+    text-align: center;
+  }
+
+  h2 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .post-link {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .tag {
+    background-color: #0C395B;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 650px) {
+    .tag {
+      display: none;
+    }
+  }

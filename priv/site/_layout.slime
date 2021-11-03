@@ -1,0 +1,70 @@
+---
+title: "Shiryel's Blog"
+---
+doctype html
+html
+  head
+    title Shiryel's Blog
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="description" content=(@env[:description] || @env[:title])
+    meta name="keywords" content=(@env[:tags] && Enum.join(@env[:tags], ", "))
+    meta name="og:title" content=@env[:title]
+    meta name="og:description" content=(@env[:description] || @env[:title])
+    meta name="og:type" content="article"
+    meta name="og:image" content="https://blog.shiryel.com/images/logo-512.png"
+    meta name="twitter:card" content="summary"
+    meta name="twitter:site" content="@shiryel_"
+    meta name="twitter:creator" content="@shiryel_"
+    = link_to_css "css/prism.min.css", media: "all"
+    = link_to_css "css/reset.css", media: "all"
+  body
+    .content
+      = @children
+    = include(@env, "_includes/footer.slime")
+
+  = link_to_js "js/prism.min.js"
+
+css:
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FBFBFBba;
+    background-image: radial-gradient(
+      circle at center center,
+      transparent 0%,
+      rgb(33, 33, 33) 99%
+      ),
+      repeating-linear-gradient(
+      0deg,
+      rgba(163, 163, 163, 0.2) 0px,
+      rgba(163, 163, 163, 0.2) 1px,
+      transparent 1px,
+      transparent 30px
+      ),
+      repeating-linear-gradient(
+      90deg,
+      rgba(163, 163, 163, 0.2) 0px,
+      rgba(163, 163, 163, 0.2) 1px,
+      transparent 1px,
+      transparent 30px
+      ),
+      linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+  }
+
+  .content {
+    background-color: #080A12;
+    border-radius: 3px;
+    padding: 20px;
+    width: 90vw;
+    max-width: 1000px;
+  }
+
+  @media (min-width: 768px) {
+    .content{
+      margin-top: 30px;
+      padding: 30px 40px;
+      min-height: 700px;
+    }
+  }

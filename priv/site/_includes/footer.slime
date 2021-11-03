@@ -1,0 +1,11 @@
+footer
+  p = link @env, "Hosted on Github", to: "https://github.com/shiryel/shiryel-blog"
+  p Copyright &copy; Shiryel
+  p = link @env, "Made with Still", to: "https://github.com/still-ex/still"
+
+css:
+  footer {
+    display: flex;
+    gap: 25px;
+    text-align: center;
+  }

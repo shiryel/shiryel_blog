@@ -1,5 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="A reminder on how to use only one certificate with certbot and nginx with the minimum of enfort" name="description"><meta content="certbot, nginx" name="keywords"><meta content="How to use only one certificate with certbot and nginx" name="og:title"><meta content="A reminder on how to use only one certificate with certbot and nginx with the minimum of enfort" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/prism.min.css" />
-<link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="A reminder on how to use only one certificate with certbot and nginx with the minimum of enfort" name="description"><meta content="certbot, nginx" name="keywords"><meta content="How to use only one certificate with certbot and nginx" name="og:title"><meta content="A reminder on how to use only one certificate with certbot and nginx with the minimum of enfort" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<link rel="stylesheet" media=all href="/css/prism.min.css" />
+<script  src="/js/prism.min.js"></script>
 </head><body><div class="content"><a href="/">Back</a><h1 class="post">How to use only one certificate with certbot and nginx</h1><p class="date">2020-07-23</p><p>This is more a reminder for myself but anyway</p>
 
 <p>First, you need to generate the certificate with the certbot on the AWS, you need to put both the www and non-www url, otherwise the redirect will be invalid or the website will display a invalid certificate</p>
@@ -170,8 +171,7 @@ p.date {
   display: flex;
   gap: 25px;
   text-align: center;
-}</style></body><script  src="/js/prism.min.js"></script>
-</html><style type="text/css">body {
+}</style></body></html><style type="text/css">body {
   display: flex;
   flex-direction: column;
   align-items: center;

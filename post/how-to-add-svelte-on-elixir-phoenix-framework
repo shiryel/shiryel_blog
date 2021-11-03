@@ -1,5 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="description"><meta content="elixir, phoenix, svelte" name="keywords"><meta content="How to add svelte on Elixir Phoenix Framework" name="og:title"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/prism.min.css" />
-<link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="description"><meta content="elixir, phoenix, svelte" name="keywords"><meta content="How to add svelte on Elixir Phoenix Framework" name="og:title"><meta content="A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<link rel="stylesheet" media=all href="/css/prism.min.css" />
+<script  src="/js/prism.min.js"></script>
 </head><body><div class="content"><a href="/">Back</a><h1 class="post">How to add svelte on Elixir Phoenix Framework</h1><p class="date">2020-07-17</p><h2>Adding the Svelte and Svelte-Loader</h2>
 
 <p>To do that, run this on the root dir of your phoenix project:
@@ -126,8 +127,7 @@ p.date {
   display: flex;
   gap: 25px;
   text-align: center;
-}</style></body><script  src="/js/prism.min.js"></script>
-</html><style type="text/css">body {
+}</style></body></html><style type="text/css">body {
   display: flex;
   flex-direction: column;
   align-items: center;

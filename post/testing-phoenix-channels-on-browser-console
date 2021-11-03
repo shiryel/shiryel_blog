@@ -1,5 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="description"><meta content="elixir, phoenix" name="keywords"><meta content="Testing Phoenix Channels on Browser console" name="og:title"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/prism.min.css" />
-<link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<!DOCTYPE html><html lang="en"><head><title>Shiryel's Blog</title><link href="images/favicon-128.png" rel="icon" type="image/png"><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="description"><meta content="elixir, phoenix" name="keywords"><meta content="Testing Phoenix Channels on Browser console" name="og:title"><meta content="In this blog post I show how you can test your phoenix channels manually on the browser console" name="og:description"><meta content="article" name="og:type"><meta content="https://blog.shiryel.com/images/logo-512.png" name="og:image"><meta content="summary" name="twitter:card"><meta content="@shiryel_" name="twitter:site"><meta content="@shiryel_" name="twitter:creator"><link rel="stylesheet" media=all href="/css/reset-7ZRpbfeygfJQle-Usm3DWw==.css" />
+<link rel="stylesheet" media=all href="/css/prism.min.css" />
+<script  src="/js/prism.min.js"></script>
 </head><body><div class="content"><a href="/">Back</a><h1 class="post">Testing Phoenix Channels on Browser console</h1><p class="date">2020-08-02</p><p>So... I was building a backend using only the channels, and I wanted to test it on the console... so after many search, here is how you can make it:</p>
 
 <h2>1 - Connect to a socket</h2>
@@ -83,8 +84,7 @@ p.date {
   display: flex;
   gap: 25px;
   text-align: center;
-}</style></body><script  src="/js/prism.min.js"></script>
-</html><style type="text/css">body {
+}</style></body></html><style type="text/css">body {
   display: flex;
   flex-direction: column;
   align-items: center;

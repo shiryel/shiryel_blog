@@ -1,5 +1,5 @@
 footer
-  p = link @env, "Hosted on Github", to: "https://github.com/shiryel/shiryel-blog"
+  p = link @env, "Hosted on Github", to: "https://github.com/shiryel/shiryel_blog"
   p Copyright &copy; Shiryel
   p = link @env, "Made with Still", to: "https://github.com/still-ex/still"
 

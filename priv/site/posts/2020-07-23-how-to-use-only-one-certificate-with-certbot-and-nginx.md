@@ -7,7 +7,7 @@ tags:
   - nginx
 title: "How to use only one certificate with certbot and nginx"
 description: "A reminder on how to use only one certificate with certbot and nginx with the minimum of enfort"
-permalink: post/how-to-use-only-one-certificate-with-certbot-and-nginx
+permalink: post/how-to-use-only-one-certificate-with-certbot-and-nginx/index.html
 date: 2020-07-23
 ---
 

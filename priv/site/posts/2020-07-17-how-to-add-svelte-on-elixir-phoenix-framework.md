@@ -8,7 +8,7 @@ tags:
   - svelte
 title: "How to add svelte on Elixir Phoenix Framework"
 description: "A reminder on how to add svelte on Elixir Phoenix Framework with the minimum of enfort"
-permalink: "post/how-to-add-svelte-on-elixir-phoenix-framework"
+permalink: "post/how-to-add-svelte-on-elixir-phoenix-framework/index.html"
 date: "2020-07-17"
 ---
 

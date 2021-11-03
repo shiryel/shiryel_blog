@@ -7,7 +7,7 @@ tags:
   - phoenix
 title: "Testing Phoenix Channels on Browser console"
 description: "In this blog post I show how you can test your phoenix channels manually on the browser console"
-permalink: post/testing-phoenix-channels-on-browser-console
+permalink: post/testing-phoenix-channels-on-browser-console/index.html
 date: 2020-08-02
 ---
 

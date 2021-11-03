@@ -7,7 +7,7 @@ tags:
   - github actions
 title: "How to push a static website to AWS using github actions"
 description: "A reminder on how to push a static website to AWS using github actions with the minimum of enfort"
-permalink: post/how-to-push-a-static-website-to-aws-using-github-actions
+permalink: post/how-to-push-a-static-website-to-aws-using-github-actions/index.html
 date: 2020-07-20
 ---
 
